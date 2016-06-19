@@ -288,3 +288,17 @@ begin
 end
 Go
 
+--Añadir Caracteristicas de rol administrador a la base de datos con microsoft azure
+--Creando un usuario en SQL Azure con permisos restringidos segun rol
+--Crear Usuario Para base de datos 
+CREATE USER hentadwer WITH password='Jairoalberto0561';
+--create logion para servidor 
+CREATE LOGIN hentadwer WITH password='Jairoalberto0561';
+--procedimiento almacenado para loguear administrador de base de datos 
+EXEC sp_addrolemember 'dbmanager', 'hentadwer';
+--procedimiento almacenado para permitir a una cuenta generar mas loguin de susuario 
+EXEC sp_addrolemember 'loginmanager', 'hentadwer';
+--consulta comprobacion de inicio de seccion almacenados en la base de datos
+SELECT * FROM sys.sql_logins;
+--consulta niveles de base de datos que puede acceder los usuarios administrativos 
+SELECT * FROM sys.databases;
